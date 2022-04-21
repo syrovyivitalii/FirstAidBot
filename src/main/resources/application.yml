@@ -1,0 +1,5 @@
+bot:
+  BOT_TOKEN: <5197475909:AAGLxNHbjJ-zduAv-gg3m7aZAQElsOCx39g>
+  BOT_USERNAME: <FirstAid_by_SV_bot>
+server:
+  PORT: $PORT

@@ -1,1 +1,1 @@
-worker: java -cp target/classes/;target/dependency/* SV.TheFirstAid.TheFirstAidApplication
+worker: sh target/bin/TheFirstAid

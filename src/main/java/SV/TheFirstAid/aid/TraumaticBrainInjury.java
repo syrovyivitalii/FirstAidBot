@@ -1,4 +1,4 @@
-package SV.TheFirstAid.Package;
+package SV.TheFirstAid.aid;
 
 public class TraumaticBrainInjury {
     //ЧМТ
@@ -24,7 +24,7 @@ public class TraumaticBrainInjury {
         text += "\uD83D\uDD38 Крок 9. При погіршенні стану постраждалого зателефонувати до диспетчера екстреної медичної допомоги, дотримуватись його рекомендацій;\n\n";
         return text;
     }
-    String traumaticBrainInjuryDemo(){
+    public String traumaticBrainInjuryDemo(){
         return traumaticBrainInjury();
     }
 }

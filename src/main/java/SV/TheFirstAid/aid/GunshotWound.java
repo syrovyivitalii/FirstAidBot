@@ -1,4 +1,4 @@
-package SV.TheFirstAid.Package;
+package SV.TheFirstAid.aid;
 
 
 public class GunshotWound {
@@ -16,7 +16,7 @@ public class GunshotWound {
         text += "УВАГА❗ Не намагайтеся витягнути кулю з тіла самостійно! ";
         return text;
     }
-    String gunshotWoundDemo(){
+    public String gunshotWoundDemo(){
         return gunshotWound();
     }
 }

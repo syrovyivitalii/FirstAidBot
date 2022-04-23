@@ -1,4 +1,4 @@
-package SV.TheFirstAid.Package;
+package SV.TheFirstAid.aid;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
@@ -31,14 +31,14 @@ public class BoneInjuries {
         replyKeyboardMarkup.setKeyboard(keyboardRows);
         return replyKeyboardMarkup;
     }
-    ReplyKeyboardMarkup getBoneInjuriesKeyBoardDemo(){
+    public ReplyKeyboardMarkup getBoneInjuriesKeyBoardDemo(){
         return getBoneInjuriesKeyBoard();
     }
     //перелом кістки
     private String boneInjuries(){
         return  "Оберіть вид травми ⛑ ";
     }
-    String boneInjuriesDemo(){
+    public String boneInjuriesDemo(){
         return boneInjuries();
     }
 
@@ -55,7 +55,7 @@ public class BoneInjuries {
         text +="\uD83D\uDD38 Крок 7. Забезпечити постійних нагляд за постраждалим до прибуття бригади екстреної (швидкої) медичної допомоги.\n";
         return text;
     }
-    String openFractureDemo(){
+    public String openFractureDemo(){
         return openFracture();
     }
 
@@ -70,7 +70,7 @@ public class BoneInjuries {
         text +="\uD83D\uDD38 Крок 5. Забезпечити постійних нагляд за постраждалим до прибуття бригади екстреної (швидкої) медичної допомоги.\n";
         return text;
     }
-    String closedFractureDemo(){
+    public String closedFractureDemo(){
         return closedFracture();
     }
 
@@ -91,7 +91,7 @@ public class BoneInjuries {
         text +="\uD83D\uDD38 УВАГА❗ Ні в якому разі не вправляйте вивихнуту кінцівку! Це може зробити лише лікар-травматолог!\n";
         return text;
     }
-    String dislocationDemo(){
+    public String dislocationDemo(){
         return dislocation();
     }
 }

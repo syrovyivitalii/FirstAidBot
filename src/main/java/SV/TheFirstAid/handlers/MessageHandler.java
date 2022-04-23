@@ -1,53 +1,43 @@
-package SV.TheFirstAid.Package;
+package SV.TheFirstAid.handlers;
 
-import lombok.SneakyThrows;
+import SV.TheFirstAid.aid.*;
+import SV.TheFirstAid.messagesender.MessageSender;
 import org.springframework.stereotype.Component;
-
-import org.telegram.telegrambots.bots.TelegramLongPollingBot;
-import org.telegram.telegrambots.meta.TelegramBotsApi;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Message;
-import org.telegram.telegrambots.meta.api.objects.Update;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
-import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
-import org.telegram.telegrambots.updatesreceivers.DefaultBotSession;
+import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 
 @Component
-public class TheFirstAidBot extends TelegramLongPollingBot {
-
-    @Override
-    public String getBotUsername() {
-        return "FirstAid_by_SV_bot";
+public class MessageHandler implements Handler<Message> {
+    //екземпляри класів
+    Bleeding bleeding = new Bleeding();
+    BoneInjuries boneInjuries = new BoneInjuries();
+    Burns burns = new Burns();
+    CardiopulmonaryResuscitation CPR = new CardiopulmonaryResuscitation();
+    GunshotWound gunshotWound = new GunshotWound();
+    Services services = new Services();
+    TraumaticBrainInjury traumaticBrainInjury = new TraumaticBrainInjury();
+    //надіслати повідомлення
+    private final MessageSender messageSender;
+    public MessageHandler(MessageSender messageSender) {
+        this.messageSender = messageSender;
     }
 
     @Override
-    public String getBotToken() {
-        return "5197475909:AAGLxNHbjJ-zduAv-gg3m7aZAQElsOCx39g";
-    }
-
-    @Override
-    public void onUpdateReceived(Update update) {
-        if (update.hasMessage()){
-            handleMessage(update.getMessage());
-        }
-    }
-    private void handleMessage(Message message){
-        if (message.hasText()){
-            //вивід повідомлення користувача в консоль
+    public void choose(Message message) {
+        if (message.hasText()) {
+            //вивести повідомлення в консоль
             System.out.println(message.getText());
-            //екземпляри класів
-            CardiopulmonaryResuscitation CPR = new CardiopulmonaryResuscitation();
-            Bleeding bleeding = new Bleeding();
-            Burns burns = new Burns();
-            GunshotWound gunshotWound = new GunshotWound();
-            TraumaticBrainInjury brainInjury = new TraumaticBrainInjury();
-            BoneInjuries boneInjuries = new BoneInjuries();
-            Services services = new Services();
-            //відповідь користувачеві в конкретний чат
+            //надсилати повідомлення в конкретний чат
             SendMessage sendMessage = new SendMessage();
             sendMessage.setChatId(String.valueOf(message.getChatId()));
-            //логіка
             switch (message.getText()) {
                 case "/start":
                     String text = "Що трапилось?";
@@ -120,11 +110,14 @@ public class TheFirstAidBot extends TelegramLongPollingBot {
                 //вогневе поранення
                 case "Вогневе поранення\uD83D\uDD2B":
                     sendMessage.setText(gunshotWound.gunshotWoundDemo());
-                    //inlineButton(message);
+                    //inline повідомлення
+                    sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
                     break;
                 //ЧМТ
                 case "Черепно-мозкова травма\uD83E\uDDE0":
-                    sendMessage.setText(brainInjury.traumaticBrainInjuryDemo());
+                    sendMessage.setText(traumaticBrainInjury.traumaticBrainInjuryDemo());
+                    //inline повідомлення
+                    sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
                     break;
                 //травми кісток
                 case "Травми кісток\uD83E\uDDB4":
@@ -152,20 +145,18 @@ public class TheFirstAidBot extends TelegramLongPollingBot {
                     sendMessage.setReplyMarkup(keyboardReturn);
                     break;
                 default:
-                    sendMessage.setText("Вибачте, я не знаю що з цим робити -  " + message.getText());
+                    sendMessage.setText("Ви ввели не коректні дані!");
             }
-            try {
-                execute(sendMessage);
-            } catch (TelegramApiException e) {
-                e.printStackTrace();
-            }
+            messageSender.sendMessage(sendMessage);
         }
     }
-    @SneakyThrows
-    public static void main(String[] args){
-        TheFirstAidBot bot = new TheFirstAidBot();
-        TelegramBotsApi telegramBotsApi = new TelegramBotsApi(DefaultBotSession.class);
-        telegramBotsApi.registerBot(bot);
+    private InlineKeyboardMarkup inlineCPRKeyboardMarkup(){
+        InlineKeyboardMarkup inlineKeyboardMarkup = new InlineKeyboardMarkup();
+        List<List<InlineKeyboardButton>> keyboard = new ArrayList<>();
+        keyboard.add(Collections.singletonList(InlineKeyboardButton.builder().text("СЛР-Дорослий").callbackData("CPR-Old").build()));
+        keyboard.add(Collections.singletonList(InlineKeyboardButton.builder().text("СЛР-Дитина").callbackData("CPR-Young").build()));
+        keyboard.add(Collections.singletonList(InlineKeyboardButton.builder().text("СЛР-Немовля").callbackData("CPR-Baby").build()));
+        inlineKeyboardMarkup.setKeyboard(keyboard);
+        return inlineKeyboardMarkup;
     }
 }
-

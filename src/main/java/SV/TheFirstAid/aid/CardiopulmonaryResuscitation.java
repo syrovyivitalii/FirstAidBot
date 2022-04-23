@@ -1,4 +1,4 @@
-package SV.TheFirstAid.Package;
+package SV.TheFirstAid.aid;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
@@ -33,7 +33,7 @@ public class CardiopulmonaryResuscitation {
         return replyKeyboardMarkup;
     }
 
-    ReplyKeyboardMarkup getCPRKeyBoardDemo(){
+    public ReplyKeyboardMarkup getCPRKeyBoardDemo(){
         return getCPRKeyBoard();
     }
 
@@ -44,7 +44,7 @@ public class CardiopulmonaryResuscitation {
         text+= "УВАГА❗ Перед початком СЛР переконайтеся, що постраждалоий знаходиться на жорсткій поверхні!\n";
         return text;
     }
-    String CPR_Demo(){
+    public String CPR_Demo(){
         return CPR();
     }
     //CЛР дорослому
@@ -61,7 +61,7 @@ public class CardiopulmonaryResuscitation {
         text += "- не настане фізичне виснаження рятівника; \n";
         return text;
     }
-    String CPR_OldDemo(){
+    public String CPR_OldDemo(){
         return CPR_Old();
     }
     //СЛР дитині
@@ -78,7 +78,7 @@ public class CardiopulmonaryResuscitation {
         text += "- не настане фізичне виснаження рятівника; \n";
         return text;
     }
-    String CPR_YoungDemo(){
+    public String CPR_YoungDemo(){
         return CPR_Young();
     }
     //СЛР немовляті
@@ -93,7 +93,7 @@ public class CardiopulmonaryResuscitation {
         text += "- не настане фізичне виснаження рятівника; \n";
         return text;
     }
-    String CPR_BabyDemo(){
+    public String CPR_BabyDemo(){
         return CPR_Baby();
     }
 }

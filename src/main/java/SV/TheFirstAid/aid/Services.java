@@ -1,4 +1,4 @@
-package SV.TheFirstAid.Package;
+package SV.TheFirstAid.aid;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
@@ -41,7 +41,7 @@ public class Services {
         replyKeyboardMarkup.setKeyboard(keyboardRows);
         return replyKeyboardMarkup;
     }
-    ReplyKeyboardMarkup getMenuKeyBoardDemo(){
+    public ReplyKeyboardMarkup getMenuKeyBoardDemo(){
         return  getMenuKeyBoard();
     }
 
@@ -65,7 +65,7 @@ public class Services {
         text += "syrovyivitalii@gmail.com \n";
         return text;
     }
-    String instructionDemo(){
+    public String instructionDemo(){
         return instruction();
     }
 

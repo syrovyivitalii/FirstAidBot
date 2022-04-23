@@ -3,3 +3,7 @@ bot:
   BOT_USERNAME: <FirstAid_by_SV_bot>
 server:
   PORT: $PORT
+
+spring:
+  main:
+    allow-circular-references: true

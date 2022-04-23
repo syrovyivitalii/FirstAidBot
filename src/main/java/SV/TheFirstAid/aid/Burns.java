@@ -1,4 +1,4 @@
-package SV.TheFirstAid.Package;
+package SV.TheFirstAid.aid;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
@@ -35,7 +35,7 @@ public class Burns {
         replyKeyboardMarkup.setKeyboard(keyBoardBurnsRows);
         return replyKeyboardMarkup;
     }
-    ReplyKeyboardMarkup getBurnsKeyboardDemo(){
+    public ReplyKeyboardMarkup getBurnsKeyboardDemo(){
         return getBurnsKeyboard();
     }
     //опік
@@ -46,7 +46,7 @@ public class Burns {
         text +="\uD83D\uDD38 За глибиною ураження тканини опіки можна умовно розділити на поверхневі, помірно глибокі та глибокі. У лікарській практиці це відповідає опікам І-го(почервонянням шкіри) , ІІ-го(появою пухирів) та ІІІ–ІV-го(обвуглюванням шкіри та ураженням нижніх шарів тканини) ступенів відповідно.\n\n";
         return text;
     }
-    String burnsDemo(){
+    public String burnsDemo(){
         return burns();
     }
 
@@ -63,7 +63,7 @@ public class Burns {
         text += "\uD83D\uDD39 Проколювати пухирі – це ще один шлях до зараження рани та додаткового травмування тканин. \n\n";
         return text;
     }
-    String thermalBurnsDemo(){
+    public String thermalBurnsDemo(){
         return thermalBurns();
     }
 
@@ -76,7 +76,7 @@ public class Burns {
         text += "\uD83D\uDD39 При потраплянні в дихальні шляхи необхідно дихати розпиленим за допомогою пульверизатора 10% розчином питної соди, при потраплянні лугу — розпиленим 3% розчином борної кислоти.\n\n";
         return text;
     }
-    String chemicalBurnsDemo(){
+    public String chemicalBurnsDemo(){
         return chemicalBurns();
     }
 
@@ -90,7 +90,7 @@ public class Burns {
         text += "\uD83D\uDD39 У випадку опікового шоку потерпілого слід зігріти. Не можна зривати пухирі, видаляти з обпеченого місця мастику, каніфоль та інші смолисті речовини (за їх наявності), оскільки під час їх видалення можна здерти обпечену шкіру, що може призвести до зараження рани. \n\n";
         return text;
     }
-    String electricBurnsDemo(){
+    public String electricBurnsDemo(){
         return electricBurns();
     }
     private String frostbite(){
@@ -100,7 +100,7 @@ public class Burns {
         text += "\uD83D\uDD38 Крок 3. Дати випити багато теплої безалькогольної рідини. ";
         return text;
     }
-    String frostbiteDemo(){
+    public String frostbiteDemo(){
         return frostbite();
     }
 }

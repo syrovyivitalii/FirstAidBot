@@ -1,4 +1,4 @@
-package SV.TheFirstAid.Package;
+package SV.TheFirstAid.aid;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
@@ -31,7 +31,7 @@ public class Bleeding {
         replyKeyboardMarkup.setKeyboard(keyboardBleedingRows);
         return replyKeyboardMarkup;
     }
-    ReplyKeyboardMarkup getBleedingKeyBoardDemo(){
+    public ReplyKeyboardMarkup getBleedingKeyBoardDemo(){
         return getBleedingKeyBoard();
     }
 
@@ -59,7 +59,7 @@ public class Bleeding {
         replyKeyboardMarkup.setKeyboard(keyboardExternalBleedingRows);
         return replyKeyboardMarkup;
     }
-    ReplyKeyboardMarkup getExternalBleedingKeyboardDemo(){
+    public ReplyKeyboardMarkup getExternalBleedingKeyboardDemo(){
         return getExternalBleedingKeyboard();
     }
 
@@ -69,7 +69,7 @@ public class Bleeding {
         text+= "Для зупинки кровотечі використовуйте чистий матеріал. За наявності - одягніть рукавички\uD83E\uDDE4 \n\n";
         return text;
     }
-    String bleedingDemo(){
+    public String bleedingDemo(){
         return bleeding();
     }
 
@@ -77,7 +77,7 @@ public class Bleeding {
     private String externalBleeding(){
         return "Оберіть місце кровотечі\uD83E\uDE78 ";
     }
-    String externalBleedingDemo(){
+    public String externalBleedingDemo(){
         return externalBleeding();
     }
 
@@ -98,7 +98,7 @@ public class Bleeding {
         text += ("\uD83D\uDD38 Крок 5. Прикладайте холодні компреси з інтервалом 15 хвилин через кожну наступну годину. \n");
         return text;
     }
-    String internalBleedingDemo(){
+    public String internalBleedingDemo(){
         return internalBleeding();
     }
 
@@ -112,7 +112,7 @@ public class Bleeding {
         text += "\uD83D\uDD38 Крок 5. Негайно відправити постраждалого в лікарню разом з кінцівкою. \n\n";
         return text;
     }
-    String limbAmputationDemo(){
+    public String limbAmputationDemo(){
         return limbAmputation();
     }
 
@@ -137,7 +137,7 @@ public class Bleeding {
        text += "- якщо кровотеча не зупинена, накласти на рану пов’язку. \n";
        return text;
     }
-    String limbBleedingDemo(){
+    public String limbBleedingDemo(){
         return limbBleeding();
     }
 
@@ -155,7 +155,7 @@ public class Bleeding {
         text += "\uD83D\uDD38 Крок 5. Не потрібно відзначати час накладання джгута. \n\n";
         return text;
     }
-    String headNeckBleedingDemo(){
+    public String headNeckBleedingDemo(){
         return headNeckBleeding();
     }
 
@@ -180,7 +180,7 @@ public class Bleeding {
         text += "\uD83D\uDD38 Крок 7. Забезпечити постійний нагляд за постраждалим до приїзду швидкої.\n";
         return text;
     }
-    String bodeBleedingDemo(){
+    public String bodeBleedingDemo(){
         return bodyBleeding();
     }
 }

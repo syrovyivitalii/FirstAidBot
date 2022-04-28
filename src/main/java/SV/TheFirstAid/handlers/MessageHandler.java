@@ -24,6 +24,9 @@ public class MessageHandler implements Handler<Message> {
     GunshotWound gunshotWound = new GunshotWound();
     Services services = new Services();
     TraumaticBrainInjury traumaticBrainInjury = new TraumaticBrainInjury();
+    ForStudent forStudent = new ForStudent();
+    ChestInjury chestInjury = new ChestInjury();
+    SpineInjury spineInjury = new SpineInjury();
     //надіслати повідомлення
     private final MessageSender messageSender;
     public MessageHandler(MessageSender messageSender) {
@@ -108,7 +111,7 @@ public class MessageHandler implements Handler<Message> {
                     sendMessage.setText(burns.frostbiteDemo());
                     break;
                 //вогневе поранення
-                case "Вогневе поранення\uD83D\uDD2B":
+                case "Вогнепальне поранення\uD83D\uDD2B":
                     sendMessage.setText(gunshotWound.gunshotWoundDemo());
                     //inline повідомлення
                     sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
@@ -133,6 +136,49 @@ public class MessageHandler implements Handler<Message> {
                     break;
                 case "\uD83D\uDD39Вивих":
                     sendMessage.setText(boneInjuries.dislocationDemo());
+                    break;
+                //травми грудної клітки
+                case "Травми грудної клітки\uD83D\uDC55":{
+                    sendMessage.setText(chestInjury.chestInjuryDemo());
+                    ReplyKeyboardMarkup keyboardChest = chestInjury.getChestKeyBoardDemo();
+                    sendMessage.setReplyMarkup(keyboardChest);
+                    break;
+                }
+                //проникаюча травма
+                case "Проникаюча травма\uD83D\uDD2A":
+                    sendMessage.setText(chestInjury.penetratingInjuryDemo());
+                    sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
+                    break;
+                //закрита травма
+                case "Закрита травма⛑":
+                    sendMessage.setText(chestInjury.closedInjuryDemo());
+                    sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
+                    break;
+                //травма хребта
+                case "Травми хребта⚠️":
+                    sendMessage.setText(spineInjury.spineInjuryDemo());
+                    ReplyKeyboardMarkup keyboardSpine = spineInjury.getSpineKeyBoardDemo();
+                    sendMessage.setReplyMarkup(keyboardSpine);
+                    break;
+                //безпечне місце
+                case "Безпечне місце⛑":
+                    sendMessage.setText(spineInjury.safelyPlaceDemo());
+                    sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
+                    break;
+                //небезпечне місце
+                case "Небезпечне місце⚠️":
+                    sendMessage.setText(spineInjury.dangerPlaceDemo());
+                    sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
+                    break;
+                //здобувачеві освіти
+                case "Здобувачеві освіти\uD83D\uDC68\u200D\uD83C\uDF93":
+                    sendMessage.setText("Оберіть: ");
+                    ReplyKeyboardMarkup keyboardStudent = forStudent.getStudentKeyBoardDemo();
+                    sendMessage.setReplyMarkup(keyboardStudent);
+                    break;
+                //алгоритм розв'язання ситуаційних задач
+                case "Алгоритм розв'язання ситуаційних задач\uD83D\uDCD2":
+                    sendMessage.setText(forStudent.algorithmDemo());
                     break;
                 //інструкція
                 case "Інструкція користувача\uD83D\uDCC4":

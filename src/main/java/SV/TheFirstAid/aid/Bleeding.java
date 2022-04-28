@@ -75,7 +75,7 @@ public class Bleeding {
 
     //зовнішня кровотеча
     private String externalBleeding(){
-        return "Оберіть місце кровотечі\uD83E\uDE78 ";
+        return "Оберіть місце кровотечі⬇️ ";
     }
     public String externalBleedingDemo(){
         return externalBleeding();

@@ -24,19 +24,28 @@ public class Services {
         //створюємо другий рядок кнопок
         KeyboardRow keyboardSecondRow = new KeyboardRow();
         keyboardSecondRow.add("Опіки/Обмороження⛑");
-        keyboardSecondRow.add("Вогневе поранення\uD83D\uDD2B");
+        keyboardSecondRow.add("Вогнепальне поранення\uD83D\uDD2B");
         //створюємо третій рядок кнопок
         KeyboardRow keyboardThirdRow = new KeyboardRow();
         keyboardThirdRow.add("Черепно-мозкова травма\uD83E\uDDE0");
         keyboardThirdRow.add("Травми кісток\uD83E\uDDB4");
         //створюємо четвертий рядок
         KeyboardRow keyboardFourthRow = new KeyboardRow();
-        keyboardFourthRow.add("Інструкція користувача\uD83D\uDCC4");
+        keyboardFourthRow.add("Травми грудної клітки\uD83D\uDC55");
+        keyboardFourthRow.add("Травми хребта⚠️");
+        //створюємо п'ятий рядок
+        KeyboardRow keyboardFifthRow = new KeyboardRow();
+        keyboardFifthRow.add("Здобувачеві освіти\uD83D\uDC68\u200D\uD83C\uDF93");
+        //створюємо шостий рядок
+        KeyboardRow keyboardSixthRow = new KeyboardRow();
+        keyboardSixthRow.add("Інструкція користувача\uD83D\uDCC4");
         //додаємо всі рядки в список
         keyboardRows.add(keyboardRow);
         keyboardRows.add(keyboardSecondRow);
         keyboardRows.add(keyboardThirdRow);
         keyboardRows.add(keyboardFourthRow);
+        keyboardRows.add(keyboardFifthRow);
+        keyboardRows.add(keyboardSixthRow);
         //встановлюємо цей список нашій клавіатурі
         replyKeyboardMarkup.setKeyboard(keyboardRows);
         return replyKeyboardMarkup;

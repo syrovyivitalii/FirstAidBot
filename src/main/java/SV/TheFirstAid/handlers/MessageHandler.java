@@ -2,13 +2,18 @@ package SV.TheFirstAid.handlers;
 
 import SV.TheFirstAid.aid.*;
 import SV.TheFirstAid.messagesender.MessageSender;
+import lombok.SneakyThrows;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
+import org.telegram.telegrambots.meta.api.methods.send.SendPhoto;
+import org.telegram.telegrambots.meta.api.objects.InputFile;
 import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -33,7 +38,8 @@ public class MessageHandler implements Handler<Message> {
         this.messageSender = messageSender;
     }
 
-    @Override
+
+    @Override @SneakyThrows
     public void choose(Message message) {
         if (message.hasText()) {
             //вивести повідомлення в консоль
@@ -41,6 +47,13 @@ public class MessageHandler implements Handler<Message> {
             //надсилати повідомлення в конкретний чат
             SendMessage sendMessage = new SendMessage();
             sendMessage.setChatId(String.valueOf(message.getChatId()));
+            //надсилання фото в конкретний чат
+            SendPhoto sendPhoto = new SendPhoto();
+            SendPhoto sengPhotoTwo = new SendPhoto();
+            SendPhoto sendPhotoThree = new SendPhoto();
+            sendPhoto.setChatId(String.valueOf(message.getChatId()));
+            sengPhotoTwo.setChatId(String.valueOf(message.getChatId()));
+            sendPhotoThree.setChatId(String.valueOf(message.getChatId()));
             switch (message.getText()) {
                 case "/start":
                     String text = "Що трапилось?";
@@ -59,12 +72,20 @@ public class MessageHandler implements Handler<Message> {
                     break;
                 case "Дорослий\uD83D\uDC68\uD83C\uDFFC":
                     sendMessage.setText(CPR.CPR_OldDemo());
+                    sendPhoto.setPhoto(new InputFile("https://green-way.com.ua/storage/app/media/Yulya/pomosh-pri-dtp/glava4/serdechno-legochnaja-reanimacija-2.png"));
+                    sengPhotoTwo.setPhoto(new InputFile("https://green-way.com.ua/storage/app/media/Yulya/pomosh-pri-dtp/glava4/neprjamoj-massazh-serdca-1.png"));
+                    sendPhotoThree.setPhoto(new InputFile("https://green-way.com.ua/storage/app/media/Yulya/pomosh-pri-dtp/glava4/iskusstvennoe-dyhanie-3.png"));
+                    messageSender.sendPhoto(sendPhoto);
+                    messageSender.sendPhoto(sengPhotoTwo);
+                    messageSender.sendPhoto(sendPhotoThree);
                     break;
                 case "Дитина\uD83D\uDC66\uD83C\uDFFC":
                     sendMessage.setText(CPR.CPR_YoungDemo());
                     break;
                 case "Немовля\uD83D\uDC76\uD83C\uDFFC":
                     sendMessage.setText(CPR.CPR_BabyDemo());
+                    sendPhoto.setPhoto(new InputFile("https://i0.wp.com/tv5.zp.ua/wp-content/uploads/2019/04/SLR-ditini.jpg?fit=500%2C334&ssl=1"));
+                    messageSender.sendPhoto(sendPhoto);
                     break;
                 //кровотеча
                 case "Кровотеча\uD83E\uDE78":
@@ -88,6 +109,8 @@ public class MessageHandler implements Handler<Message> {
                     break;
                 case "Голова/Шия\uD83D\uDC64":
                     sendMessage.setText(bleeding.headNeckBleedingDemo());
+                    sendPhoto.setPhoto(new InputFile("https://green-way.com.ua/storage/app/media/Yulya/pomosh-pri-dtp/glava4/nalozhenie-davjashhej-povjazki-na-sheju.png"));
+                    messageSender.sendPhoto(sendPhoto);
                     break;
                 case "Живіт\uD83E\uDDCD\uD83C\uDFFC\u200D♂️":
                     sendMessage.setText(bleeding.bodeBleedingDemo());
@@ -148,6 +171,8 @@ public class MessageHandler implements Handler<Message> {
                 case "Проникаюча травма\uD83D\uDD2A":
                     sendMessage.setText(chestInjury.penetratingInjuryDemo());
                     sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
+                    sendPhoto.setPhoto(new InputFile("https://olgrad.kiev.ua/wp-content/uploads/zachem-nuzhna-okkluzivnaya-povyazka.jpg"));
+                    messageSender.sendPhoto(sendPhoto);
                     break;
                 //закрита травма
                 case "Закрита травма⛑":
@@ -164,11 +189,15 @@ public class MessageHandler implements Handler<Message> {
                 case "Безпечне місце⛑":
                     sendMessage.setText(spineInjury.safelyPlaceDemo());
                     sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
+                    sendPhoto.setPhoto(new InputFile("https://adst.mp.pl/s/empendium/img_zoom/B27/23.8-4.jpg"));
+                    messageSender.sendPhoto(sendPhoto);
                     break;
                 //небезпечне місце
                 case "Небезпечне місце⚠️":
                     sendMessage.setText(spineInjury.dangerPlaceDemo());
                     sendMessage.setReplyMarkup(inlineCPRKeyboardMarkup());
+                    sendPhoto.setPhoto(new InputFile("https://adst.mp.pl/s/empendium/img_zoom/B27/23.8-4.jpg"));
+                    messageSender.sendPhoto(sendPhoto);
                     break;
                 //здобувачеві освіти
                 case "Здобувачеві освіти\uD83D\uDC68\u200D\uD83C\uDF93":

@@ -2,8 +2,6 @@ package SV.TheFirstAid.aid;
 
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.KeyboardRow;
-
-import javax.security.auth.login.CredentialException;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -12,8 +12,6 @@ import org.telegram.telegrambots.meta.api.objects.replykeyboard.InlineKeyboardMa
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.ReplyKeyboardMarkup;
 import org.telegram.telegrambots.meta.api.objects.replykeyboard.buttons.InlineKeyboardButton;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -208,6 +206,30 @@ public class MessageHandler implements Handler<Message> {
                 //алгоритм розв'язання ситуаційних задач
                 case "Алгоритм розв'язання ситуаційних задач\uD83D\uDCD2":
                     sendMessage.setText(forStudent.algorithmDemo());
+                    break;
+                //оцінка дій рятувальника
+                case "Оцінка дій рятувальника, який знаходиться на місці події\uD83D\uDCD7":
+                    sendMessage.setText(forStudent.actionEvaluationDemo());
+                    break;
+                //алгоритм СЛР
+                case "Алгоритм вирішення ситуаційних задач з теми \"СЛР\"\uD83D\uDCD4":
+                    sendMessage.setText(forStudent.algorithmCPRDemo());
+                    break;
+                //алгоритм без ознак смерті
+                case "Алгоритм вирішення ситуаційних задач з ДМД при відсутності у них ознак смерті\uD83D\uDCD3":
+                    sendMessage.setText(forStudent.algorithmWithoutSignOfDeathDemo());
+                    break;
+                //алгоритм "Кровотеча"
+                case "Алгоритм вирішення ситуаційних задач з теми \"Кровотеча\"\uD83D\uDCD5":
+                    sendMessage.setText(forStudent.algorithmBleedingDemo());
+                    break;
+                //алгоритм "Травматична ампутація"
+                case "Алгоритм вирішення ситуаційних задач з теми \"Травматична ампутація\"\uD83D\uDCD9":
+                    sendMessage.setText(forStudent.algorithmAmputationDemo());
+                    break;
+                //алгоритм "ГДН"
+                case "Алгоритм вирішення ситуаційних задач з теми \"ГДН\"\uD83D\uDCD8":
+                    sendMessage.setText(forStudent.algorithmARFDemo());
                     break;
                 //інструкція
                 case "Інструкція користувача\uD83D\uDCC4":
